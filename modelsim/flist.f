@@ -3,4 +3,4 @@
 ../mod_add.v
 ../mod_sub.v
 
-../pattern/tb.v
+../pattern/tb_ma.v
