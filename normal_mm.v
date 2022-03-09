@@ -21,12 +21,14 @@ assign	T_L_flag = (|T_L);
 wire	[`datawidth-1:0]	c;
 assign	c = T_L * mu;
 
-wire	[`datawidth-1:0]	cp_H;
-wire	[`datawidth-1:0]	cp_L;
-assign	{cp_H, cp_L} = c*p;
+wire	[`datawidth-1:0]	tmp_H;
+wire	[`datawidth-1:0]	tmp_L;
+assign	{tmp_H, tmp_L} = c*p;
 
-wire	[`datawidth-1:0]	tmp;
-assign	tmp = T_H + cp_H;
-
-assign	out = T_L_flag?tmp+1:tmp;
+mod_add ma0(
+	.in1(T_H),
+	.in2(T_L_flag+tmp_H),
+	._p(_p),
+	
+	.out(out));
 endmodule
