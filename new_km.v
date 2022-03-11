@@ -1,6 +1,6 @@
 `include "ntt_define.vh"
 
-module km(
+module new_km(
 	input	clk,
 	input	rstn,
 	input	[`datawidth-1:0]in1,
@@ -24,7 +24,7 @@ assign	in2_L = in2[0+:`datawidth/2];
 
 wire	[`datawidth-1:0]	km_sub1_out1;
 wire	[`datawidth-1:0]	km_sub1_out2;
-km_sub km_sub1(
+new_km_sub km_sub1(
 	.clk(clk),
 	.rstn(rstn),
 	//.select(select),
@@ -42,7 +42,7 @@ assign	add_in1 = {clk?km_sub1_out2:km_sub1_out1, clk?km_sub1_out1:km_sub1_out2};
 
 wire	[`datawidth-1:0]	km_sub2_out1;
 wire	[`datawidth-1:0]	km_sub2_out2;
-km_sub km_sub2(
+new_km_sub km_sub2(
 	.clk(clk),
 	.rstn(rstn),
 	//.select(select),

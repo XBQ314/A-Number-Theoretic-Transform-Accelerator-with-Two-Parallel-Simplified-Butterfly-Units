@@ -41,7 +41,16 @@ begin
 end
 
 assign	out_golden=(in1*in2);
-km ins1(
+//new_km new_km1(
+//	.clk(clk),
+//	.rstn(rstn),
+//	.in1(in1),
+//	.in2(in2),
+//	
+//	.out_L(out_L),
+//	.out_H(out_H)
+//);
+old_km old_km1(
 	.clk(clk),
 	.rstn(rstn),
 	.in1(in1),

@@ -1,4 +1,4 @@
-module km_sub(
+module new_km_sub(
 	input	clk,
 	input	rstn,
 	//input	select,
