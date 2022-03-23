@@ -1,23 +1,14 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
-add wave -noupdate -radix unsigned /tb_ctrl/clk
-add wave -noupdate -radix unsigned /tb_ctrl/rstn
-add wave -noupdate -radix unsigned /tb_ctrl/start
-add wave -noupdate -radix unsigned /tb_ctrl/cur_state
-add wave -noupdate -radix unsigned /tb_ctrl/ctrl1/flag_fin
-add wave -noupdate -divider index
-add wave -noupdate -radix unsigned /tb_ctrl/p
-add wave -noupdate -radix unsigned /tb_ctrl/k
-add wave -noupdate -radix unsigned /tb_ctrl/i
-add wave -noupdate -radix unsigned /tb_ctrl/gamma0
-add wave -noupdate -radix unsigned /tb_ctrl/gamma1
-add wave -noupdate -radix unsigned /tb_ctrl/ren
-add wave -noupdate -radix unsigned /tb_ctrl/wen
-add wave -noupdate /tb_ctrl/special_add
+add wave -noupdate /tb_ma/in1
+add wave -noupdate /tb_ma/in2
+add wave -noupdate /tb_ma/out
+add wave -noupdate /tb_ma/out_golden
+add wave -noupdate -radix unsigned /tb_ma/_p
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {394500 ps} 0}
+WaveRestoreCursors {{Cursor 1} {465600 ps} 0}
 quietly wave cursor active 1
-configure wave -namecolwidth 208
+configure wave -namecolwidth 150
 configure wave -valuecolwidth 100
 configure wave -justifyvalue left
 configure wave -signalnamewidth 0
@@ -31,4 +22,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {1150500 ps}
+WaveRestoreZoom {399300 ps} {526400 ps}

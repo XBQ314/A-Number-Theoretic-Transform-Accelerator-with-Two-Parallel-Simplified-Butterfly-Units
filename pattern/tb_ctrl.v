@@ -18,19 +18,33 @@ wire    wen;
 wire    ren;
 wire    special_add;
 
+wire [10:0]oldadd0;
+wire [10:0]oldadd1;
+wire [10:0]oldadd2;
+wire [10:0]oldadd3;
+
+wire [1:0]newadd0_idx;
+wire [8:0]newadd0;
+wire [1:0]newadd1_idx;
+wire [8:0]newadd1;
+wire [1:0]newadd2_idx;
+wire [8:0]newadd2;
+wire [1:0]newadd3_idx;
+wire [8:0]newadd3;
+
 initial 
 begin
     repeat(5) @(posedge clk) #2;
     rstn=1;repeat(2) @(posedge clk) #2;
 
     set_state=3'b001;start=1;repeat(3) @(posedge clk) #2;
-    start=0;repeat(50) @(posedge clk) #2;
+    start=0;repeat(100) @(posedge clk) #2;
 
     // set_state=3'b010;start=1;repeat(3) @(posedge clk) #2;
     // start=0;repeat(5) @(posedge clk) #2;
 
     set_state=3'b011;start=1;repeat(3) @(posedge clk) #2;
-    start=0;repeat(50) @(posedge clk) #2;
+    start=0;repeat(100) @(posedge clk) #2;
 
     // set_state=3'b100;start=1;repeat(3) @(posedge clk) #2;
     // start=0;repeat(5) @(posedge clk) #2;
@@ -62,4 +76,37 @@ ctrl ctrl1
   .special_add(special_add)
 );
 
+gen_oldadd gen_oldadd1
+(
+    // .clk(clk),
+    // .rstn(rstn),
+    .special_add(special_add),
+    .p(p), //max = 15
+    .k(k), //max = 511
+    .i(i), //max = 511
+
+    .oldadd0(oldadd0), // max=2047
+    .oldadd1(oldadd1),
+    .oldadd2(oldadd2),
+    .oldadd3(oldadd3)
+);
+
+cfmm cfmm1
+(
+    // .clk(clk),
+    // .rstn(rstn),
+    .oldadd0(oldadd0),
+    .oldadd1(oldadd1),
+    .oldadd2(oldadd2),
+    .oldadd3(oldadd3),
+
+    .newadd0_idx(newadd0_idx),
+    .newadd0(newadd0),
+    .newadd1_idx(newadd1_idx),
+    .newadd1(newadd1),
+    .newadd2_idx(newadd2_idx),
+    .newadd2(newadd2),
+    .newadd3_idx(newadd3_idx),
+    .newadd3(newadd3)
+);
 endmodule

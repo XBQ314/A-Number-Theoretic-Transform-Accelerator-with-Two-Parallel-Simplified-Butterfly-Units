@@ -9,6 +9,8 @@
 ../normal_mm.v
 ../km_mm.v
 ../ctrl.v
+../gen_oldadd.v
+../cfmm.v
 ../bfu_v0.v
 ../bfu_v1.v
 
