@@ -3,8 +3,8 @@
 
 module tb_km();
 
-//parameter P = 12289;
-parameter P = 343576577;
+parameter P = 12289;
+//parameter P = 343576577;
 
 reg		[`datawidth-1:0]	in1;
 reg		[`datawidth-1:0]	in2;
@@ -41,16 +41,7 @@ begin
 end
 
 assign	out_golden=(in1*in2);
-//new_km new_km1(
-//	.clk(clk),
-//	.rstn(rstn),
-//	.in1(in1),
-//	.in2(in2),
-//	
-//	.out_L(out_L),
-//	.out_H(out_H)
-//);
-old_km old_km1(
+new_km new_km1(
 	.clk(clk),
 	.rstn(rstn),
 	.in1(in1),
@@ -59,6 +50,15 @@ old_km old_km1(
 	.out_L(out_L),
 	.out_H(out_H)
 );
+// old_km old_km1(
+// 	.clk(clk),
+// 	.rstn(rstn),
+// 	.in1(in1),
+// 	.in2(in2),
+	
+// 	.out_L(out_L),
+// 	.out_H(out_H)
+// );
 wire	[2*`datawidth-1:0] out;
 assign	out = {out_H, out_L};
 //check result

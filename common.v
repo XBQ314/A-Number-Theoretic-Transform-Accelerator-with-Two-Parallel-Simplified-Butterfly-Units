@@ -50,26 +50,26 @@ end
 
 endmodule
 
-module shift_8 #(parameter data_width = 14)(
+module shift_9 #(parameter data_width = 14)(
     input [data_width-1:0] din,
 	input rstn,clk,
 	output wire [data_width-1:0] dout
 	);
 	
 	reg [data_width-1:0] t0,t1,t2,t3,t4,t5,t6;
-	reg [data_width-1:0] t7;
+	reg [data_width-1:0] t7,t8;
 	
 	always@(posedge clk or negedge rstn)
 	begin
 	  if(~rstn) begin
 	    t0 <= 0; t1 <= 0; t2 <= 0; t3 <= 0; t4 <= 0;
-	    t5 <= 0; t6 <= 0; t7 <= 0; end
+	    t5 <= 0; t6 <= 0; t7 <= 0; t8 <= 0;end
 	  else begin
 	    t0 <= din;
 	    t1 <= t0; t2 <= t1; t3 <= t2; t4 <= t3;
-	    t5 <= t4; t6 <= t5; t7 <= t6; 
+	    t5 <= t4; t6 <= t5; t7 <= t6; t8 <= t7;
 	  end
 	end
 	
-	assign dout = t7;
+	assign dout = t8;
 endmodule

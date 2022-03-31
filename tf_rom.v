@@ -12,7 +12,8 @@ module tf_rom
     output [`datawidth-1:0]gamma1,
     output [`datawidth-1:0]gamma2
 );
-
+wire special_add_Q;
+DFF #(.datawidth(1)) dff_special_add(.clk(clk), .rstn(rstn), .D(special_add), .Q(special_add_Q));
 wire [`datawidth-1:0] gamma_bank1_douta;
 wire [`datawidth-1:0] gamma_bank2_douta;
 // assign gamma1 = (~op & ~special_add)?:
@@ -24,8 +25,8 @@ assign gamma1 = gamma_bank1_douta;
 //                 (~op &  special_add)?gamma_bank2_douta:
 //                 ( op &  special_add)?gamma_bank2_douta:
 //                 ( op & ~special_add)?gamma_bank1_douta:'d0;
-assign gamma2 = ( special_add)?gamma_bank2_douta:
-                (~special_add)?gamma_bank1_douta:'d0;
+assign gamma2 = ( special_add_Q)?gamma_bank2_douta:
+                (~special_add_Q)?gamma_bank1_douta:'d0;
 gamma_bank gamma_bank1 (.clka(clk), .ena('d1), .wea('d0), .addra(gamma1_add), .dina('d0), .douta(gamma_bank1_douta));
 gamma_bank gamma_bank2 (.clka(clk), .ena('d1), .wea('d0), .addra(gamma2_add), .dina('d0), .douta(gamma_bank2_douta));
 // input wire clka
