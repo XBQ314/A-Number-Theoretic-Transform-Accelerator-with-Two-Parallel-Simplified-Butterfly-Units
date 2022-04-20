@@ -1,1 +1,1 @@
-`define datawidth 30
+`define datawidth 14

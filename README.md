@@ -1,4 +1,4 @@
-# Number-theoretic-transform-NTT-radix-2-parallelism-2-on-FPGA
+# A Number Theoretic Transform Accelerator with Two Parallel Simplified Butterfly Units
 
 ## File structure
 
